@@ -3,24 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { JSX } from "react/jsx-runtime";
-
-interface Product {
-    title: string;
-    slug: string;
-    description: string;
-    price: number;
-    currency: string;
-    imageUrl?: string;
-    availability?: string;
-    seo?: any;
-}
-interface seo {
-    metaTitle?: string;
-    metaDescription?: string;
-    ogTitle?: string;
-    ogDescription?: string;
-    ogImageUrl?: string;
-}
+import { Product } from "@/types/product";
 
 const API_URL = "/api/products";
 

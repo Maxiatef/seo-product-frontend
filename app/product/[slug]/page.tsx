@@ -1,4 +1,8 @@
+import React from "react";
 import Navbar from "@/components/navbar";
+import Image from "next/image";
+import Link from "next/link";
+import { Product } from "@/types/product";
 
 interface Params {
     params: Promise<{ slug: string }>;
@@ -6,23 +10,46 @@ interface Params {
 
 export default async function ProductPage({ params }: Params) {
     const { slug } = await params;
+    
+    // Fetch product data server-side
+    let product: Product | null = null;
+    let error: string | null = null;
 
-    // Fetch from internal API proxy to avoid CORS
-    const baseUrl = "http://seoproducts.runasp.net";
-    const res = await fetch(`${baseUrl}/api/product/${encodeURIComponent(slug)}`, {
-        cache: 'no-store'
-    });
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+        const res = await fetch(`${baseUrl}/api/products/${slug}`, {
+            cache: 'no-store' // Ensure fresh data on each request
+        });
+        
+        if (!res.ok) {
+            throw new Error(`Failed to fetch product: ${res.status}`);
+        }
+        
+        const data = await res.json();
+        product = Array.isArray(data) ? data[0] : data;
+        console.log("Fetched product:", product);
+    } catch (err: any) {
+        error = err.message || "Failed to load product";
+        console.error("Error fetching product:", err);
+    }
 
-    if (!res.ok) {
+    if (error) {
         return (
-            <div className="p-8">
-                <h2 className="text-xl font-semibold">Product not found</h2>
-                <p className="text-sm text-gray-600">Status: {res.status}</p>
-            </div>
+            <>
+                <Navbar />
+                <div className="p-4 text-red-600">Error: {error}</div>
+            </>
         );
     }
 
-    const product = await res.json();
+    if (!product) {
+        return (
+            <>
+                <Navbar />
+                <div className="p-4">Product not found</div>
+            </>
+        );
+    }
 
     return (
         <>
