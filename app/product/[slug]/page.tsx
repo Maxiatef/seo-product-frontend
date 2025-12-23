@@ -8,7 +8,7 @@ export default async function ProductPage({ params }: Params) {
     const { slug } = await params;
 
     // Fetch from internal API proxy to avoid CORS
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = "http://seoproducts.runasp.net";
     const res = await fetch(`${baseUrl}/api/product/${encodeURIComponent(slug)}`, {
         cache: 'no-store'
     });
