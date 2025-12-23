@@ -17,7 +17,8 @@ export default function ProductCard(): JSX.Element {
             try {
                 setLoading(true);
                 const res = await fetch(API_URL);
-                if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
+                if (!res.ok) throw new Error(`Our server went AFK. Please refresh or try again later.`);
+
                 const data = await res.json();
                 const items: Product[] = Array.isArray(data) ? data : data.items ?? [];
                 console.log("Fetched products:", res, data);
@@ -47,7 +48,7 @@ export default function ProductCard(): JSX.Element {
                         aria-labelledby={`product-${p.slug}`}
                         className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2A16DE] focus-visible:ring-offset-2 rounded-lg"
                     >
-                        <article className="bg-white dark:bg-gray-900 shadow rounded-lg overflow-hidden flex flex-col border border-transparent hover:shadow-lg transition">
+                        <article className="bg-white dark:bg-gray-900 shadow rounded-lg overflow-hidden flex flex-col border border-transparent hover:shadow-lg transition h-96">
 
 
                         <div className="w-full h-48 relative bg-gray-50 dark:bg-gray-800">
