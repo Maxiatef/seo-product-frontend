@@ -1,5 +1,4 @@
 import Navbar from "@/components/navbar";
-import Image from "next/image";
 
 interface Params {
     params: Promise<{ slug: string }>;
@@ -55,17 +54,13 @@ export default async function ProductPage({ params }: Params) {
                         </div>
                         <div className="flex-1 flex justify-center">
                             {product.imageUrl ? (
-                                <div className="w-full max-w-md h-96 relative rounded-lg overflow-hidden shadow-2xl">
-                                    <Image
-                                        src={product.imageUrl}
-                                        alt={product.title}
-                                        fill
-                                        className="object-cover"
-                                        unoptimized
-                                    />
-                                </div>
+                                <img
+                                    src={product.imageUrl}
+                                    alt={product.title}
+                                    className="w-full max-w-xs sm:max-w-sm md:max-w-md h-64 sm:h-80 md:h-96 object-cover rounded-lg shadow-2xl"
+                                />
                             ) : (
-                                <div className="w-full max-w-md h-96 flex items-center justify-center bg-gray-200 rounded-lg text-gray-500">
+                                <div className="w-full max-w-xs sm:max-w-sm md:max-w-md h-64 sm:h-80 md:h-96 flex items-center justify-center bg-gray-200 rounded-lg text-gray-500">
                                     No image available
                                 </div>
                             )}
