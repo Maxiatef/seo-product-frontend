@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "ATTRACT Gaming Gear - High-Performance Gaming Equipment",
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased font-sans">
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -95,23 +95,23 @@ export default async function ProductPage({ params }: Params) {
                 </section>
 
                 {/* Details Section */}
-                <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900">
+                <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
                     <div className="max-w-6xl mx-auto">
-                        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+                        <h2 className="text-3xl font-bold text-center mb-12 text-white">
                             Product Details
                         </h2>
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {/* Description */}
-                            <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div className="lg:col-span-2 bg-gray-800 rounded-lg shadow-lg p-8">
                                 <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white flex items-center">
                                     <span className="w-2 h-8 bg-gradient-to-br from-[#2A16DE] to-[#B526D1] rounded mr-3"></span>
                                     Description
                                 </h3>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                                <p className="text-gray-300 leading-relaxed text-lg">
                                     {product.description}
                                 </p>
                                 <div className="mt-6">
-                                    <h4 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Key Features</h4>
+                                    <h4 className="text-xl font-semibold mb-4 text-white">Key Features</h4>
                                     <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                                         <li className="flex items-start">
                                             <span className="text-[#2A16DE] mr-2">•</span>
@@ -134,18 +134,18 @@ export default async function ProductPage({ params }: Params) {
                             </div>
 
                             {/* Specifications */}
-                            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div className="bg-gray-800 rounded-lg shadow-lg p-8">
                                 <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white flex items-center">
                                     <span className="w-2 h-8 bg-gradient-to-br from-[#2A16DE] to-[#B526D1] rounded mr-3"></span>
                                     Specifications
                                 </h3>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
-                                        <span className="font-medium text-gray-900 dark:text-white">Price</span>
+                                        <span className="font-medium text-white">Price</span>
                                         <span className="text-[#2A16DE] font-bold">{product.currency} {product.price?.toFixed(2)}</span>
                                     </div>
                                     <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
-                                        <span className="font-medium text-gray-900 dark:text-white">Availability</span>
+                                        <span className="font-medium text-white">Availability</span>
                                         <span className={`px-2 py-1 rounded-full text-sm font-semibold ${
                                             product.availability === 'InStock'
                                                 ? 'bg-green-100 text-green-800'
@@ -155,11 +155,11 @@ export default async function ProductPage({ params }: Params) {
                                         </span>
                                     </div>
                                     <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
-                                        <span className="font-medium text-gray-900 dark:text-white">Product ID</span>
+                                        <span className="font-medium text-white">Product ID</span>
                                         <span className="text-gray-600 dark:text-gray-400">{product.slug}</span>
                                     </div>
                                     <div className="flex justify-between items-center py-2">
-                                        <span className="font-medium text-gray-900 dark:text-white">Category</span>
+                                        <span className="font-medium text-white">Category</span>
                                         <span className="text-gray-600 dark:text-gray-400">Gaming Gear</span>
                                     </div>
                                 </div>
