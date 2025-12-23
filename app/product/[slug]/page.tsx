@@ -16,8 +16,7 @@ export default async function ProductPage({ params }: Params) {
     let error: string | null = null;
 
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/api/products/${slug}`, {
+        const res = await fetch(`http://seoproducts.runasp.net/api/products/${slug}`, {
             cache: 'no-store' // Ensure fresh data on each request
         });
         
